@@ -1,17 +1,22 @@
 import {Layout} from "antd";
 import Header from "./fragments/Header";
-import WeatherAPI from "./api/WeatherAPI";
+import Weather from "./weather/Weather";
 
-const App = ({ title }) => {
+const App = ({ weather, error }) => {
     const { Content } = Layout;
 
     console.log("IN APP")
+    console.log(weather)
 
     return (
         <Layout>
             <Header/>
             <Content>
-                <WeatherAPI></WeatherAPI>
+                
+            
+                {/* <City city={weather.city} />   */}
+                {/* <List list={weather.list} /> */}
+
             </Content>
         </Layout>
     )
