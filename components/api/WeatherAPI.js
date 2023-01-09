@@ -1,41 +1,55 @@
+import axios from 'axios';
 import React from "react";
-import axios from "axios";
 
-export default class WeatherAPI extends React.Component {
-    state = {
-        weather: []
-      }
+const API_KEY       = 'a73f7e47897e972617ae88c542735dce';
+const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${API_KEY}`;
 
-      componentDidMount() {
-        const API_URL       = 'https://api.openweathermap.org/data/2.5/forecast';
-        const API_KEY       = 'a73f7e47897e972617ae88c542735dce';
-        const LOCATION_CODE = '3037656';
-       
-        axios
-            .get(API_URL, {
-                params: {
-                    id: LOCATION_CODE,
-                    appid: API_KEY,
-                    units: 'metric'
-                }
-            })
-            .then(response => {
-                const data = response.data;
-                this.setItem(data)
-        })
-        .catch(error => console.log("Error", error));
-      }
+class App extends React.Component {
+  state = {
+    temperature: null,
+    city: null,
+    country: null,
+    humidity: null,
+    description: null,
+    error: null
+  };
 
-      render() {
-        return (
-          <ul>
-            {
-              this.state.weather
-                .map(weather =>
-                  <li key={weather.id}>{weather.name}</li>
-                )
-            }
-          </ul>
-        )
-      }
+  componentDidMount() {
+    axios
+      .get(API_URL)
+      .then(response => {
+        this.setState({
+          temperature: response.data.main.temp,
+          city: response.data.name,
+          country: response.data.sys.country,
+          humidity: response.data.main.humidity,
+          description: response.data.weather[0].description,
+          error: null
+        });
+      })
+      .catch(error => {
+        this.setState({
+          error: 'Error retrieving data'
+        });
+      });
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.temperature && (
+          <div>
+            {this.state.city}, {this.state.country}
+            <br />
+            {this.state.temperature}°F
+            <br />
+            {this.state.humidity}% humidity
+            <br />
+            {this.state.description}
+          </div>
+        )}
+        {this.state.error && <div>{this.state.error}</div>}
+      </div>
+    );
+  }
 }
