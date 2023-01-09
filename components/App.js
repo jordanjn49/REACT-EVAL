@@ -13,7 +13,13 @@ const App = ({ weather, error }) => {
             <Header/>
             <Content>
                 
-            
+                {weather.city.name}
+                {weather.city.cood}
+                {weather.city.country}
+                {weather.city.population}
+
+
+
                 {/* <City city={weather.city} />   */}
                 {/* <List list={weather.list} /> */}
 
