@@ -91,7 +91,7 @@ const SignUp = () => {
                 margin: "40px",
                 borderRadius: "15px",
                 overflow: "hidden",
-                borderColor: "#7c1f1f",
+                borderColor: "#000000",
                 borderWidth: "3px",
               }}
             >
@@ -174,8 +174,8 @@ const SignUp = () => {
                       type="primary"
                       style={{
                         width: 300,
-                        backgroundColor: "#7c1f1f",
-                        borderColor: "#7c1f1f"
+                        backgroundColor: "#000000",
+                        borderColor: "#000000"
                       }}
                       htmlType="submit"
                       className="login-form-button"
@@ -196,7 +196,7 @@ const SignUp = () => {
                 marginLeft: "90px",
                 borderRadius: "15px",
                 overflow: "hidden",
-                borderColor: "#7c1f1f",
+                borderColor: "#000000",
                 borderWidth: "3px",
               }}
             >
@@ -209,7 +209,7 @@ const SignUp = () => {
                   Déjà un compte ?
                 </Title>
 
-                <Link style={{ color: "#7c1f1f" }} href="/login">Se connecter</Link>
+                <Link style={{ color: "#000000" }} href="/login">Se connecter</Link>
               </Typography>
             </Card>
           </Col>
