@@ -1,9 +1,12 @@
 import {Layout} from "antd";
 import Header from "./fragments/Header";
 import Weather from "./weather/Weather";
+import { Card } from 'antd';
+
 
 const App = ({ weather, error }) => {
     const { Content } = Layout;
+    
 
     console.log("IN APP")
     console.log(weather)
@@ -12,11 +15,14 @@ const App = ({ weather, error }) => {
         <Layout>
             <Header/>
             <Content>
+            <Card title="Vôtre ville :">
+            <Card.Grid >Nom : {weather.city.name}</Card.Grid>
+        <Card.Grid>Pays : {weather.city.country}</Card.Grid>
+        <Card.Grid >Population : {weather.city.population} habitants</Card.Grid>
+        <Card.Grid>Latitude : {weather.city.coord.lat}</Card.Grid>
+        <Card.Grid>Longitude : {weather.city.coord.lon}</Card.Grid>
+     </Card>
                 
-                {weather.city.name}
-                {weather.city.cood}
-                {weather.city.country}
-                {weather.city.population}
 
 
 

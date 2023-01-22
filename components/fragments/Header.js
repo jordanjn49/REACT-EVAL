@@ -8,7 +8,7 @@ function Header() {
 
 
   return (
-    <Header style={{backgroundColor: "#7c1f1f"}}>
+    <Header style={{backgroundColor: "#145369"}}>
       <Row justify="space-between" style={{ color: "white" }}>
         <Col>
           <Link href="/">
@@ -19,7 +19,7 @@ function Header() {
                 fontSize: "20px",
               }}
             >
-              REACT ESEO
+              Weather Forecast
             </a>
           </Link>
         </Col>
