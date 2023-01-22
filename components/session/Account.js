@@ -66,7 +66,7 @@ const Account = () => {
                 margin: "40px",
                 borderRadius: "15px",
                 overflow: "hidden",
-                borderColor: "#7c1f1f",
+                borderColor: "#000000",
                 borderWidth: "3px",
               }}
             >
@@ -79,7 +79,7 @@ const Account = () => {
                 }}
               >
                 <Title level={1} style={{ fontSize: 32, marginBottom: 32 }}>
-                  Information du compte
+                  Informations du compte
                 </Title>
                 <p> Bonjour {state.firstName} {state.name}</p>
                 <p> Votre e-mail est : {state.email}</p>
@@ -91,9 +91,9 @@ const Account = () => {
             >
               <Button style={{
                         width: 300,
-                        backgroundColor: "#7c1f1f",
+                        backgroundColor: "#000000",
                         color: "white",
-                        borderColor: "#7c1f1f"
+                        borderColor: "#000000"
                       }}onClick={logout}>Déconnexion</Button>
             </Typography>
             </Card>
