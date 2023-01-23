@@ -8,37 +8,49 @@ const App = ({ weather, error }) => {
     const { Content } = Layout;
     
     const temperatures = weather.list.map(list => {
-        return {
-            dt: list.dt_txt,
-            temp: list.main.temp - 273.15
+        if(list.hasOwnProperty("dt_txt") && list.main.hasOwnProperty("temp")){
+            return {
+                dt: list.dt_txt,
+                temp: list.main.temp - 273.15
+            }
         }
       });
     
       const pressures = weather.list.map(list => {
-        return {
-            dt: list.dt_txt,
-            pressure: list.main.pressure
+        if(list.hasOwnProperty("dt_txt") && list.main.hasOwnProperty("pressure")){
+
+            return {
+                dt: list.dt_txt,
+                pressure: list.main.pressure
+            }
         }
       });
 
       const clouds = weather.list.map(list => {
-        return {
-            dt: list.dt_txt,
-            clouds: list.clouds.all
+        if(list.hasOwnProperty("dt_txt") && list.clouds.hasOwnProperty("all")){
+            return {
+                dt: list.dt_txt,
+                clouds: list.clouds.all
+            }
         }
       });
 
       const humidity = weather.list.map(list => {
-        return {
-            dt: list.dt_txt,
-            humidity: list.main.humidity
+        if(list.hasOwnProperty("dt_txt") && list.main.hasOwnProperty("humidity")){
+            return {
+                dt: list.dt_txt,
+                humidity: list.main.humidity
+            }
         }
       });
+
       const winds = weather.list.map(list => {
-        return {
-            dt: list.dt_txt,
-            wind_speed: list.wind.speed,
-            wind_deg: list.wind.deg
+        if(list.hasOwnProperty("dt_txt") && list.wind.hasOwnProperty("speed") && list.wind.hasOwnProperty("deg")){
+            return {
+                dt: list.dt_txt,
+                wind_speed: list.wind.speed,
+                wind_deg: list.wind.deg
+            }
         }
       });
 
