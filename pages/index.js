@@ -14,14 +14,12 @@ export async function getStaticProps() {
   try {
     const data = await fetch(API_URL);
     const weather = await data.json();
-    console.log(data);
-    console.log("***");
-    console.log(weather);
     return {
       props: {
         weather: weather,
       },
     };
+
   } catch (err) {
     console.log;
     return {
