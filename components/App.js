@@ -2,7 +2,7 @@ import {Layout} from "antd";
 import Header from "./fragments/Header";
 import Weather from "./weather/Weather";
 import { Card } from 'antd';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { Area, AreaChart, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 
 const App = ({ weather, error }) => {
@@ -113,15 +113,22 @@ const App = ({ weather, error }) => {
                     </Card>
 
                     <Card title="Nuages en fonction du temps">
-                        <LineChart width={600} height={300} data={clouds}>
+                        <AreaChart width={600} height={300} data={clouds} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}> 
+                            <defs>
+                                <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="#919191" stopOpacity={0.8}/>
+                                <stop offset="95%" stopColor="#919191" stopOpacity={0}/>
+                                </linearGradient>
+                            </defs>
                             <XAxis dataKey="dt" />
                             <YAxis />
                             <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
                             <Tooltip />
                             <Legend />
-                            <Line type="monotone" dataKey="clouds" stroke="#8884d8" />
-                        </LineChart>
+                            <Area type="monotone" dataKey="clouds" stroke="#919191" fillOpacity={1} fill="url(#colorUv)"/>
+                        </AreaChart>
                     </Card>
+
 
                 </Content>
         </Layout>
