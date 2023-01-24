@@ -7,6 +7,8 @@ import { async } from "@firebase/util";
 import { firebaseConfig } from "../../config/firebase";
 import Header from "../fragments/Header";
 import { Layout, Row, Typography, Col, Button, message, Card } from "antd";
+import Footer from "../fragments/Footer";
+import StickyFooter from 'react-sticky-footer';
 
 const firebaseApp = initializeApp(firebaseConfig);
 const { Content } = Layout;
@@ -53,7 +55,7 @@ const Account = () => {
   return (
     <Layout>
       <Header/>
-      <Content>
+      <Content style={{ height: '85vh' }}>
         <Row>
           <Col
             xs={{ span: 20, offset: 2 }}
@@ -102,6 +104,7 @@ const Account = () => {
           </Col>
         </Row>
       </Content>
+      <Footer/>
     </Layout>
   );
 };

@@ -6,7 +6,7 @@ function Footer() {
 
 
   return (
-    <Footer style={{backgroundColor: "#145369", textAlign: 'center'}}>
+    <Footer style={{backgroundColor: "#145369", textAlign: 'center', position: "absolute", bottom: "0", width: "100%"}}>
       <span style={{color: "white", height: '5px'}}>Copyright © Jordan JOUIN & Killian TROIS</span>
     </Footer>
   );

@@ -4,9 +4,20 @@ import Footer from "./fragments/Footer";
 import { Card } from 'antd';
 import { Area, AreaChart, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Label, ResponsiveContainer } from 'recharts';
 
+import { initializeApp } from "firebase/app";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { async } from "@firebase/util";
+import { firebaseConfig } from "../config/firebase";
+import React, { useEffect, useState } from "react";
+
+const firebaseApp = initializeApp(firebaseConfig);
 
 const App = ({ weather, error }) => {
     const { Content } = Layout;
+    const auth = getAuth(firebaseApp);
+    const db = getFirestore(firebaseApp);
+    const [state, setState] = useState(false);
     
     const temperatures = weather.list.map(list => {
         if(list.hasOwnProperty("dt_txt") && list.main.hasOwnProperty("temp")){
@@ -58,17 +69,38 @@ const App = ({ weather, error }) => {
         }
       });
 
+      const icon = weather.list[0].weather[0].icon
+      const type = weather.list[0].weather[0].main
+      const desc = weather.list[0].weather[0].description
+
     console.log(temperatures)
     console.log(clouds)
     console.log(pressures)
     console.log(humidity)
     console.log(winds)
+    console.log(global)
+
+    useEffect(() => {
+        onAuthStateChanged(auth, async (user) => {
+          if (user) {
+            setState(true)
+          } else {
+            setState(false)
+          }
+        });
+      }, []);
 
     return (
         <Layout>
             <Header/>
-                <Content style={{ background: "#cbe7f2" }}>
-                    <Card title="Votre ville" style={{ margin: "20px" }}>
+                <Content style={{ background: "#cbe7f2", position: "relative"}}>
+                    <Card title="Votre ville" style={{
+                    margin: "20px",
+                    borderRadius: "15px",
+                    overflow: "hidden",
+                    borderColor: "#000000",
+                    borderWidth: "3px"
+                    }}>
                         <Card.Grid >Nom : {weather.city.name}</Card.Grid>
                         <Card.Grid>Pays : {weather.city.country}</Card.Grid>
                         <Card.Grid >Population : {weather.city.population} habitants</Card.Grid>
@@ -76,8 +108,15 @@ const App = ({ weather, error }) => {
                         <Card.Grid>Longitude : {weather.city.coord.lon}</Card.Grid> 
                     </Card>
                     
-                    
-                    <Card title="Informations météorologiques" style={{ margin: "20px" }}>
+                    {state ? (
+
+                    <Card title="Informations météorologiques" style={{
+                        margin: "20px",
+                        borderRadius: "15px",
+                        overflow: "hidden",
+                        borderColor: "#000000",
+                        borderWidth: "3px"
+                        }}>
 
                     <ResponsiveContainer width="95%" height={300}>
                         <LineChart width={1300} height={300} data={temperatures}>
@@ -132,9 +171,22 @@ const App = ({ weather, error }) => {
                         </AreaChart>
                     </ResponsiveContainer>
                     </Card>
-
+                    
+                    ) : (
+                        
+                        <Card style={{ 
+                            margin: "20px",
+                            borderRadius: "15px",
+                            overflow: "hidden",
+                            borderColor: "#000000",
+                            borderWidth: "3px",
+                            textAlign: "center"
+                            }}>
+                        <p>Connectez-vous ou inscrivez-vous pour accèder aux détails.</p>
+                        </Card>
+                    )}
                 </Content>
-            <Footer/>
+                <Footer></Footer>
         </Layout>
     )
 };

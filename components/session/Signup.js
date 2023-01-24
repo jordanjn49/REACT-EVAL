@@ -4,6 +4,7 @@ import "firebase/auth";
 import Header from "../fragments/Header";
 import Router from "next/router";
 import { async } from "@firebase/util";
+import Footer from "../fragments/Footer";
 
 import {
   Layout,
@@ -188,33 +189,10 @@ const SignUp = () => {
                 </Form>
               </Typography>
             </Card>
-
-            <Card
-              style={{
-                width: 300,
-                margin: "40px",
-                marginLeft: "90px",
-                borderRadius: "15px",
-                overflow: "hidden",
-                borderColor: "#000000",
-                borderWidth: "3px",
-              }}
-            >
-              <Typography
-                style={{
-                  textAlign: "center",
-                }}
-              >
-                <Title level={4} style={{ fontWeight: 500, fontSize: 18 }}>
-                  Déjà un compte ?
-                </Title>
-
-                <Link style={{ color: "#000000" }} href="/login">Se connecter</Link>
-              </Typography>
-            </Card>
           </Col>
         </Row>
       </Content>
+      <Footer/>
     </Layout>
   );
 };

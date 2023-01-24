@@ -3,6 +3,8 @@ import Link from "next/link";
 import Header from "../fragments/Header";
 import "firebase/auth";
 import Router from "next/router";
+import Footer from "../fragments/Footer";
+
 
 import {
   Layout,
@@ -168,6 +170,7 @@ const Login = () => {
           </Col>
         </Row>
       </Content>
+      <Footer/>
     </Layout>
   );
 };
