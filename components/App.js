@@ -12,7 +12,10 @@ const App = ({ weather, error }) => {
         if(list.hasOwnProperty("dt_txt") && list.main.hasOwnProperty("temp")){
             return {
                 dt: list.dt_txt,
-                temp: list.main.temp - 273.15
+                temp: list.main.temp - 273.15,
+                max: list.main.temp_max - 273.15, 
+                min: list.main.temp_min - 273.15
+
             }
         }
       });
@@ -70,12 +73,11 @@ const App = ({ weather, error }) => {
             <Header/>
                 <Content>
                     <Card title="Vôtre ville :">
-                    <Card.Grid >Nom : {weather.city.name}</Card.Grid>
-                    <Card.Grid>Pays : {weather.city.country}</Card.Grid>
-                    <Card.Grid >Population : {weather.city.population} habitants</Card.Grid>
-                    <Card.Grid>Latitude : {weather.city.coord.lat}</Card.Grid>
-                    <Card.Grid>Longitude : {weather.city.coord.lon}</Card.Grid>
-                    <Card.Grid>Longitude : {weather.list.weather}</Card.Grid>
+                        <Card.Grid >Nom : {weather.city.name}</Card.Grid>
+                        <Card.Grid>Pays : {weather.city.country}</Card.Grid>
+                        <Card.Grid >Population : {weather.city.population} habitants</Card.Grid>
+                        <Card.Grid>Latitude : {weather.city.coord.lat}</Card.Grid>
+                        <Card.Grid>Longitude : {weather.city.coord.lon}</Card.Grid> 
                     </Card>
                     
 
@@ -86,11 +88,13 @@ const App = ({ weather, error }) => {
                             <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
                             <Tooltip />
                             <Legend />
-                            <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+                            <Line type="monotone" dataKey="temp" stroke="#000000" />
+                            <Line type="monotone" dataKey="max" stroke="#ad2411" />
+                            <Line type="monotone" dataKey="min" stroke="#259bc2" />
                         </LineChart>
                     </Card>
 
-                    <Card title="Pression en fonction du temps">
+                    <Card title="Pression (hPa)">
                         <LineChart width={1300} height={300} data={pressures}>
                             <XAxis dataKey="dt" />
                             <YAxis />
