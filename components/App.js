@@ -80,7 +80,7 @@ const App = ({ weather, error }) => {
                     
 
                     <Card title="Température en fonction du temps">
-                        <LineChart width={600} height={300} data={temperatures}>
+                        <LineChart width={1300} height={300} data={temperatures}>
                             <XAxis dataKey="dt" />
                             <YAxis />
                             <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
@@ -91,7 +91,7 @@ const App = ({ weather, error }) => {
                     </Card>
 
                     <Card title="Pression en fonction du temps">
-                        <LineChart width={600} height={300} data={pressures}>
+                        <LineChart width={1300} height={300} data={pressures}>
                             <XAxis dataKey="dt" />
                             <YAxis />
                             <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
@@ -101,8 +101,8 @@ const App = ({ weather, error }) => {
                         </LineChart>
                     </Card>
 
-                    <Card title="Humidité en fonction du temps">
-                        <LineChart width={600} height={300} data={humidity}>
+                    <Card title="Humidité (%)">
+                        <LineChart width={1300} height={300} data={humidity}>
                             <XAxis dataKey="dt" />
                             <YAxis />
                             <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
@@ -112,8 +112,8 @@ const App = ({ weather, error }) => {
                         </LineChart>
                     </Card>
 
-                    <Card title="Nuages en fonction du temps">
-                        <AreaChart width={600} height={300} data={clouds} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}> 
+                    <Card title="Nuages (%)">
+                        <AreaChart width={1300} height={300} data={clouds} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}> 
                             <defs>
                                 <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
                                 <stop offset="5%" stopColor="#919191" stopOpacity={0.8}/>
