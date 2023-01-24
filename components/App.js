@@ -2,7 +2,7 @@ import {Layout} from "antd";
 import Header from "./fragments/Header";
 import Weather from "./weather/Weather";
 import { Card } from 'antd';
-import { Area, AreaChart, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { Area, AreaChart, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 
 const App = ({ weather, error }) => {
@@ -80,8 +80,9 @@ const App = ({ weather, error }) => {
                         <Card.Grid>Longitude : {weather.city.coord.lon}</Card.Grid> 
                     </Card>
                     
+                    
 
-                    <Card title="Température en fonction du temps">
+                    <ResponsiveContainer width="95%" height={300}>
                         <LineChart width={1300} height={300} data={temperatures}>
                             <XAxis dataKey="dt" />
                             <YAxis />
@@ -92,9 +93,9 @@ const App = ({ weather, error }) => {
                             <Line type="monotone" dataKey="max" stroke="#ad2411" />
                             <Line type="monotone" dataKey="min" stroke="#259bc2" />
                         </LineChart>
-                    </Card>
+                    </ResponsiveContainer>
 
-                    <Card title="Pression (hPa)">
+                    <ResponsiveContainer width="95%" height={300}>
                         <LineChart width={1300} height={300} data={pressures}>
                             <XAxis dataKey="dt" />
                             <YAxis />
@@ -103,9 +104,9 @@ const App = ({ weather, error }) => {
                             <Legend />
                             <Line type="monotone" dataKey="pressure" stroke="#8884d8" />
                         </LineChart>
-                    </Card>
+                    </ResponsiveContainer>
 
-                    <Card title="Humidité (%)">
+                    <ResponsiveContainer width="95%" height={300}>
                         <LineChart width={1300} height={300} data={humidity}>
                             <XAxis dataKey="dt" />
                             <YAxis />
@@ -114,9 +115,10 @@ const App = ({ weather, error }) => {
                             <Legend />
                             <Line type="monotone" dataKey="humidity" stroke="#8884d8" />
                         </LineChart>
-                    </Card>
+                    </ResponsiveContainer>
 
-                    <Card title="Nuages (%)">
+
+                    <ResponsiveContainer width="95%" height={300}>
                         <AreaChart width={1300} height={300} data={clouds} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}> 
                             <defs>
                                 <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -131,8 +133,7 @@ const App = ({ weather, error }) => {
                             <Legend />
                             <Area type="monotone" dataKey="clouds" stroke="#919191" fillOpacity={1} fill="url(#colorUv)"/>
                         </AreaChart>
-                    </Card>
-
+                    </ResponsiveContainer>
 
                 </Content>
         </Layout>

@@ -21,12 +21,8 @@ export async function getStaticProps() {
     };
 
   } catch (err) {
-    console.log;
-    return {
-      props: {
-        error: err,
-      },
-    };
+    console.log("ERROR");
+
   }
 }
 
