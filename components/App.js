@@ -1,8 +1,8 @@
 import {Layout} from "antd";
 import Header from "./fragments/Header";
-import Weather from "./weather/Weather";
+import Footer from "./fragments/Footer";
 import { Card } from 'antd';
-import { Area, AreaChart, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { Area, AreaChart, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Label, ResponsiveContainer } from 'recharts';
 
 
 const App = ({ weather, error }) => {
@@ -58,21 +58,17 @@ const App = ({ weather, error }) => {
         }
       });
 
-
-    console.log("IN APP")
     console.log(temperatures)
     console.log(clouds)
     console.log(pressures)
     console.log(humidity)
     console.log(winds)
 
-
-
     return (
         <Layout>
             <Header/>
-                <Content>
-                    <Card title="Vôtre ville :">
+                <Content style={{ background: "#cbe7f2" }}>
+                    <Card title="Votre ville" style={{ margin: "20px" }}>
                         <Card.Grid >Nom : {weather.city.name}</Card.Grid>
                         <Card.Grid>Pays : {weather.city.country}</Card.Grid>
                         <Card.Grid >Population : {weather.city.population} habitants</Card.Grid>
@@ -81,14 +77,15 @@ const App = ({ weather, error }) => {
                     </Card>
                     
                     
+                    <Card title="Informations météorologiques" style={{ margin: "20px" }}>
 
                     <ResponsiveContainer width="95%" height={300}>
                         <LineChart width={1300} height={300} data={temperatures}>
                             <XAxis dataKey="dt" />
-                            <YAxis />
+                            <YAxis label={{ value: 'Température (ºC)', angle: -90, position: 'insideLeft' }} />
                             <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
                             <Tooltip />
-                            <Legend />
+                            <Legend verticalAlign="top" height={36}/>
                             <Line type="monotone" dataKey="temp" stroke="#000000" />
                             <Line type="monotone" dataKey="max" stroke="#ad2411" />
                             <Line type="monotone" dataKey="min" stroke="#259bc2" />
@@ -98,22 +95,22 @@ const App = ({ weather, error }) => {
                     <ResponsiveContainer width="95%" height={300}>
                         <LineChart width={1300} height={300} data={pressures}>
                             <XAxis dataKey="dt" />
-                            <YAxis />
+                            <YAxis label={{ value: 'Pression (hPa)', angle: -90, position: 'insideLeft' }} />
                             <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
                             <Tooltip />
-                            <Legend />
-                            <Line type="monotone" dataKey="pressure" stroke="#8884d8" />
+                            <Legend verticalAlign="top" height={36}/>
+                            <Line type="monotone" dataKey="pressure" stroke="#000000" />
                         </LineChart>
                     </ResponsiveContainer>
 
                     <ResponsiveContainer width="95%" height={300}>
                         <LineChart width={1300} height={300} data={humidity}>
                             <XAxis dataKey="dt" />
-                            <YAxis />
+                            <YAxis label={{ value: 'Humidité (%)', angle: -90, position: 'insideLeft' }} />
                             <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
                             <Tooltip />
-                            <Legend />
-                            <Line type="monotone" dataKey="humidity" stroke="#8884d8" />
+                            <Legend verticalAlign="top" height={36}/>
+                            <Line type="monotone" dataKey="humidity" stroke="#000000" />
                         </LineChart>
                     </ResponsiveContainer>
 
@@ -127,15 +124,17 @@ const App = ({ weather, error }) => {
                                 </linearGradient>
                             </defs>
                             <XAxis dataKey="dt" />
-                            <YAxis />
+                            <YAxis label={{ value: 'Nuages (%)', angle: -90, position: 'insideLeft' }} />
                             <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
                             <Tooltip />
-                            <Legend />
+                            <Legend verticalAlign="top" height={36}/>
                             <Area type="monotone" dataKey="clouds" stroke="#919191" fillOpacity={1} fill="url(#colorUv)"/>
                         </AreaChart>
                     </ResponsiveContainer>
+                    </Card>
 
                 </Content>
+            <Footer/>
         </Layout>
     )
 };
