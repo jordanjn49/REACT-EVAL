@@ -68,31 +68,62 @@ const App = ({ weather, error }) => {
     return (
         <Layout>
             <Header/>
-            <Content>
-            <Card title="Vôtre ville :">
-            <Card.Grid >Nom : {weather.city.name}</Card.Grid>
-            <Card.Grid>Pays : {weather.city.country}</Card.Grid>
-            <Card.Grid >Population : {weather.city.population} habitants</Card.Grid>
-            <Card.Grid>Latitude : {weather.city.coord.lat}</Card.Grid>
-            <Card.Grid>Longitude : {weather.city.coord.lon}</Card.Grid>
-            <Card.Grid>Longitude : {weather.list.weather}</Card.Grid>
-            </Card>
-            <Header/>
+                <Content>
+                    <Card title="Vôtre ville :">
+                    <Card.Grid >Nom : {weather.city.name}</Card.Grid>
+                    <Card.Grid>Pays : {weather.city.country}</Card.Grid>
+                    <Card.Grid >Population : {weather.city.population} habitants</Card.Grid>
+                    <Card.Grid>Latitude : {weather.city.coord.lat}</Card.Grid>
+                    <Card.Grid>Longitude : {weather.city.coord.lon}</Card.Grid>
+                    <Card.Grid>Longitude : {weather.list.weather}</Card.Grid>
+                    </Card>
+                    
 
-            <Card title="Vôtre ville :">
-                {/* ... */}
-            </Card>
-            <Card title="Température en fonction du temps">
-                <LineChart width={600} height={300} data={temperatures}>
-                    <XAxis dataKey="dt" />
-                    <YAxis />
-                    <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-                    <Tooltip />
-                    <Legend />
-                    <Line type="monotone" dataKey="temp" stroke="#8884d8" />
-                </LineChart>
-            </Card>
-            </Content>
+                    <Card title="Température en fonction du temps">
+                        <LineChart width={600} height={300} data={temperatures}>
+                            <XAxis dataKey="dt" />
+                            <YAxis />
+                            <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+                            <Tooltip />
+                            <Legend />
+                            <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+                        </LineChart>
+                    </Card>
+
+                    <Card title="Pression en fonction du temps">
+                        <LineChart width={600} height={300} data={pressures}>
+                            <XAxis dataKey="dt" />
+                            <YAxis />
+                            <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+                            <Tooltip />
+                            <Legend />
+                            <Line type="monotone" dataKey="pressure" stroke="#8884d8" />
+                        </LineChart>
+                    </Card>
+
+                    <Card title="Humidité en fonction du temps">
+                        <LineChart width={600} height={300} data={humidity}>
+                            <XAxis dataKey="dt" />
+                            <YAxis />
+                            <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+                            <Tooltip />
+                            <Legend />
+                            <Line type="monotone" dataKey="humidity" stroke="#8884d8" />
+                        </LineChart>
+                    </Card>
+
+                    <Card title="Nuages en fonction du temps">
+                        <LineChart width={600} height={300} data={clouds}>
+                            <XAxis dataKey="dt" />
+                            <YAxis />
+                            <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+                            <Tooltip />
+                            <Legend />
+                            <Line type="monotone" dataKey="clouds" stroke="#8884d8" />
+                        </LineChart>
+                    </Card>
+
+                </Content>
         </Layout>
     )
 };
