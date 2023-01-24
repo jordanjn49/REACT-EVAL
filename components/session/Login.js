@@ -40,7 +40,7 @@ const Login = () => {
         const user = userCredential.user;
         console.log(user);
         message.success("Vous êtes reconnu!");
-        Router.push("/dashboard")
+        Router.push("/account")
       })
       .catch((error) => {
         setLoading(false);
