@@ -29,7 +29,7 @@ function Header() {
   }, []);
 
   return (
-    <Header style={{backgroundColor: "#145369"}}>
+    <Header style={{backgroundColor: "#145369",  position: "fixed", top: "0", width: "100%", zIndex: 10}}>
       <Row justify="space-between" style={{ color: "white" }}>
         <Col>
           <Link href="/">

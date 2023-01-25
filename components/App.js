@@ -93,7 +93,7 @@ const App = ({ weather, error }) => {
     return (
         <Layout>
             <Header/>
-                <Content style={{ background: "#cbe7f2", position: "relative"}}>
+                <Content style={{ background: "#cbe7f2", minHeight: "100vh", position: "relative", padding: "80px 0"}}>
                     <Card title="Votre ville" style={{
                     margin: "20px",
                     borderRadius: "15px",
@@ -106,6 +106,7 @@ const App = ({ weather, error }) => {
                         <Card.Grid >Population : {weather.city.population} habitants</Card.Grid>
                         <Card.Grid>Latitude : {weather.city.coord.lat}</Card.Grid>
                         <Card.Grid>Longitude : {weather.city.coord.lon}</Card.Grid> 
+                        <Card.Grid>Météo : {type} ({desc})</Card.Grid> 
                     </Card>
                     
                     {state ? (

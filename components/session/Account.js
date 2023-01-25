@@ -55,7 +55,7 @@ const Account = () => {
   return (
     <Layout>
       <Header/>
-      <Content style={{ height: '85vh' }}>
+      <Content style={{ height: '100vh', padding: "80px 0" }}>
         <Row>
           <Col
             xs={{ span: 20, offset: 2 }}

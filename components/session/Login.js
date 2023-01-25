@@ -62,7 +62,7 @@ const Login = () => {
   };
 
   return (
-    <Layout className="layout" style={{ minHeight: "100vh" }}>
+    <Layout className="layout" style={{ minHeight: "100vh", padding: "80px 0" }}>
       <Header/>
       <Content>
         <Row>
