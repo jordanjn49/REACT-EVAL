@@ -69,7 +69,7 @@ const App = ({ weather, error }) => {
         }
       });
 
-      const icon = weather.list[0].weather[0].icon
+      const icon = `http://openweathermap.org/img/wn/${weather.list[0].weather[0].icon}@2x.png`
       const type = weather.list[0].weather[0].main
       const desc = weather.list[0].weather[0].description
 
@@ -106,7 +106,8 @@ const App = ({ weather, error }) => {
                         <Card.Grid >Population : {weather.city.population} habitants</Card.Grid>
                         <Card.Grid>Latitude : {weather.city.coord.lat}</Card.Grid>
                         <Card.Grid>Longitude : {weather.city.coord.lon}</Card.Grid> 
-                        <Card.Grid>Météo : {type} ({desc})</Card.Grid> 
+                        <Card.Grid>Météo : {type} ({desc}) <img src={icon} alt="Weather icon" style={{ width: '50px', height: '50px', marginLeft: '40px', position: 'absolute', bottom: '10px'}} />
+                        </Card.Grid> 
                     </Card>
                     
                     {state ? (
