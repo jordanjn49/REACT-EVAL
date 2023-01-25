@@ -65,7 +65,7 @@ const SignUp = () => {
 
         setLoading(false);
         message.success("Compte créé!");
-        Router.push("/dashboard");
+        Router.push("/account");
       })
       .catch((error) => {
         setLoading(false);
