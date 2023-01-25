@@ -23,9 +23,9 @@ const App = ({ weather, error }) => {
         if(list.hasOwnProperty("dt_txt") && list.main.hasOwnProperty("temp")){
             return {
                 dt: list.dt_txt,
-                temp: list.main.temp - 273.15,
-                max: list.main.temp_max - 273.15, 
-                min: list.main.temp_min - 273.15
+                temp: list.main.temp,
+                max: list.main.temp_max, 
+                min: list.main.temp_min
 
             }
         }
@@ -63,7 +63,7 @@ const App = ({ weather, error }) => {
         if(list.hasOwnProperty("dt_txt") && list.wind.hasOwnProperty("speed") && list.wind.hasOwnProperty("deg")){
             return {
                 dt: list.dt_txt,
-                wind_speed: list.wind.speed,
+                wind_speed: (list.wind.speed * 3600) / 1000,
                 wind_deg: list.wind.deg
             }
         }
@@ -172,6 +172,18 @@ const App = ({ weather, error }) => {
                             <Area type="monotone" dataKey="clouds" stroke="#919191" fillOpacity={1} fill="url(#colorUv)"/>
                         </AreaChart>
                     </ResponsiveContainer>
+
+                    <ResponsiveContainer width="95%" height={300}>
+                        <LineChart width={1300} height={300} data={winds}>
+                            <XAxis dataKey="dt" />
+                            <YAxis label={{ value: 'Vents (km/h)', angle: -90, position: 'insideLeft' }} />
+                            <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+                            <Tooltip />
+                            <Legend verticalAlign="top" height={36}/>
+                            <Line type="monotone" dataKey="wind_speed" stroke="#000000" />
+                        </LineChart>
+                    </ResponsiveContainer>
+                    
                     </Card>
                     
                     ) : (
